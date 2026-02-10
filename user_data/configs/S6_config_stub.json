@@ -1,0 +1,28 @@
+{
+  "strategy": "S6_LFT_Progressive_Momentum_Rotation",
+  "trading_mode": "futures",
+  "margin_mode": "isolated",
+  "stake_currency": "USDT",
+  "timeframe": "1h",
+  "dry_run": true,
+  "exchange": {
+    "name": "binance",
+    "pair_whitelist": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT",
+      "SOL/USDT:USDT",
+      "ADA/USDT:USDT",
+      "XRP/USDT:USDT"
+    ],
+    "pair_blacklist": []
+  },
+  "max_open_trades": 4,
+  "order_types": {
+    "entry": "market",
+    "exit": "market",
+    "stoploss": "market"
+  },
+  "leverage": {
+    "default_leverage": 2.3
+  }
+}
