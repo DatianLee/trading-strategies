@@ -14,6 +14,8 @@ class S8_HFT_Progressive_Orderflow_Impulse(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "1m"
     informative_timeframe = "5m"

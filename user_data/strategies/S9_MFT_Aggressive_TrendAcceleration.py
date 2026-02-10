@@ -14,6 +14,8 @@ class S9_MFT_Aggressive_TrendAcceleration(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "15m"
     informative_timeframe = "1h"

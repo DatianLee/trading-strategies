@@ -24,6 +24,8 @@ class S7_Event_Volatility_Shock_Strategy(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "15m"
     startup_candle_count = 350

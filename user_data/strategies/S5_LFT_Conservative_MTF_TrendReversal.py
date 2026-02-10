@@ -30,6 +30,8 @@ class S5_LFT_Conservative_MTF_TrendReversal(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "production_candidate"
+    PRODUCTION_APPROVED = True
     can_short = True
     timeframe = "1h"
     informative_timeframe = "4h"

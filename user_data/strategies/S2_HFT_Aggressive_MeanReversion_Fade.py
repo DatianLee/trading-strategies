@@ -22,6 +22,8 @@ class S2_HFT_Aggressive_MeanReversion_Fade(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "1m"
     startup_candle_count = 250

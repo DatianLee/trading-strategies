@@ -14,6 +14,8 @@ class S10_LFT_Aggressive_RegimeSwitch_Trend(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "1h"
     informative_timeframe = "4h"

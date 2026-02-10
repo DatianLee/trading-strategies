@@ -25,6 +25,8 @@ class S6_LFT_Progressive_Momentum_Rotation(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "experimental"
+    PRODUCTION_APPROVED = False
     can_short = True
     timeframe = "1h"
     informative_timeframe = "4h"
