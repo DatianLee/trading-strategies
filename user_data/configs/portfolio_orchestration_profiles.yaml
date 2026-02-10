@@ -1,0 +1,158 @@
+# Portfolio orchestration template for S1-S7 in Freqtrade practice
+portfolio_orchestrator:
+  version: 1
+  timezone: UTC
+  base_currency: USDT
+
+  strategy_map:
+    S1: {bucket: HFT, enabled: true}
+    S2: {bucket: HFT, enabled: true}
+    S3: {bucket: MFT, enabled: true}
+    S4: {bucket: MFT, enabled: true}
+    S5: {bucket: LFT, enabled: true}
+    S6: {bucket: LFT, enabled: true}
+    S7: {bucket: EVENT, enabled: true}
+
+  allocation_policy:
+    mode: risk_parity_inverse_vol
+    lookback_days: 20
+    ewma_lambda: 0.94
+
+    bucket_caps:
+      HFT: 0.40
+      MFT: 0.40
+      LFT: 0.45
+      EVENT: 0.20
+    bucket_min_active_weight: 0.10
+
+    strategy_weighting:
+      mode: inverse_vol
+      min_trade_history: 100
+      fallback: equal_weight
+
+    strategy_caps:
+      default: 0.18
+      conservative: 0.12
+      aggressive: 0.22
+
+    asset_exposure_caps:
+      BTC: 0.30
+      ETH: 0.25
+      SOL: 0.18
+      DEFAULT_OTHER: 0.15
+      TOP3_COMBINED: 0.60
+
+    correlation_throttle:
+      assets: [BTC, ETH, SOL]
+      signal_alignment_window_hours: 24
+      pnl_correlation_window_days: 7
+      level_1:
+        alignment_gte: 0.75
+        new_risk_multiplier: 0.75
+      level_2:
+        alignment_gte: 0.90
+        new_risk_multiplier: 0.55
+        block_lowest_edge_strategy: true
+      strategy_corr_guard:
+        mean_pairwise_corr_gte: 0.65
+        position_size_multiplier: 0.80
+      joint_extreme:
+        apply_if: [level_2, strategy_corr_guard]
+        position_size_multiplier: 0.60
+        max_new_entries_per_15m: 1
+
+  global_risk_controls:
+    daily_loss_limit:
+      soft_pct: -0.020
+      hard_pct: -0.030
+      soft_freeze_minutes: 120
+      hard_freeze_until_next_utc_day: true
+
+    rolling_drawdown_breaker:
+      warning_dd_pct: 0.06
+      warning_size_multiplier: 0.50
+      breaker_dd_pct: 0.09
+      breaker_freeze_hours: 24
+      recovery_dd_below: 0.05
+      recovery_non_negative_pnl_hours: 12
+
+    consecutive_loss_cooldown:
+      streak_4_freeze_minutes: 90
+      streak_6_freeze_hours: 6
+      streak_8_freeze_hours: 24
+      streak_8_force_profile_stepdown: true
+      reset_after_consecutive_wins: 2
+
+    volatility_regime_switch:
+      vol_proxy: BTC_1H_ATR_PCT
+      high_vol:
+        zscore_gte: 1.5
+        consecutive_hours: 3
+        leverage_multiplier: 0.70
+        max_open_trades_multiplier: 0.80
+        slippage_threshold_multiplier: 0.80
+      extreme_vol:
+        zscore_gte: 2.2
+        leverage_multiplier: 0.50
+        max_open_trades_multiplier: 0.60
+        disable_new_entries_strategies: [S2, S7]
+
+  execution_safety:
+    order_timeout_seconds:
+      HFT: 90
+      MFT: 180
+      LFT: 300
+      EVENT: 120
+
+    retry_policy:
+      max_retries: 2
+      size_multipliers_by_retry: [0.90, 0.75]
+      refresh_limit_price_each_retry: true
+      skip_retry_on_guard_fail: true
+
+    spread_slippage_guard:
+      spread_bps_max:
+        HFT: 8
+        MFT: 15
+        LFT: 20
+        EVENT: 18
+      slippage_bps_max:
+        HFT: 10
+        MFT: 20
+        LFT: 30
+        EVENT: 25
+      symbol_guard_failures_before_cooldown: 2
+      symbol_cooldown_minutes: 30
+      symbol_guard_window_minutes: 10
+
+    funding_fee_hook:
+      enabled_if_data_available: true
+      long_or_short_projected_funding_reduce_threshold_pct: 0.04
+      size_multiplier_if_triggered: 0.75
+      absolute_funding_reject_threshold_pct: 0.08
+      reject_if_edge_score_below: 0.55
+
+  deployment_profiles:
+    conservative:
+      leverage: 1.5
+      max_open_trades: 6
+      risk_budget_pct_equity: 0.8
+      per_strategy_cap: 0.12
+      asset_cap_multiplier: 0.85
+      daily_hard_loss_limit_pct: -2.2
+
+    balanced:
+      leverage: 2.5
+      max_open_trades: 10
+      risk_budget_pct_equity: 1.4
+      per_strategy_cap: 0.18
+      asset_cap_multiplier: 1.00
+      daily_hard_loss_limit_pct: -3.0
+
+    aggressive:
+      leverage: 3.5
+      max_open_trades: 14
+      risk_budget_pct_equity: 2.1
+      per_strategy_cap: 0.22
+      asset_cap_multiplier: 1.15
+      daily_hard_loss_limit_pct: -3.8
