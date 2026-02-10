@@ -147,12 +147,12 @@ class S1_HFT_Conservative_MicroTrend_Scalper(IStrategy):
 
     def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
-            (dataframe["close"] < dataframe["ema_fast"]) & (dataframe["enter_tag"] == "s1_microtrend_long"),
+            (dataframe["close"] < dataframe["ema_fast"]) | (dataframe["adx"] < self.adx_min.value),
             ["exit_long", "exit_tag"],
         ] = (1, "s1_ema_loss")
 
         dataframe.loc[
-            (dataframe["close"] > dataframe["ema_fast"]) & (dataframe["enter_tag"] == "s1_microtrend_short"),
+            (dataframe["close"] > dataframe["ema_fast"]) | (dataframe["adx"] < self.adx_min.value),
             ["exit_short", "exit_tag"],
         ] = (1, "s1_ema_loss")
         return dataframe
