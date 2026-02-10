@@ -87,9 +87,9 @@ class S7_Event_Volatility_Shock_Strategy(IStrategy):
         dataframe["true_range"] = (dataframe["high"] - dataframe["low"]) / dataframe["close"]
         dataframe["range_expansion"] = dataframe["true_range"] > dataframe["true_range"].rolling(96).quantile(0.9)
 
-        # Follow-through requires continuation after expansion candle.
-        dataframe["bull_follow_through"] = dataframe["close"].shift(-1) > dataframe["high"]
-        dataframe["bear_follow_through"] = dataframe["close"].shift(-1) < dataframe["low"]
+        # Follow-through uses the already closed previous candle to avoid lookahead.
+        dataframe["bull_follow_through"] = dataframe["close"].shift(1) > dataframe["high"].shift(2)
+        dataframe["bear_follow_through"] = dataframe["close"].shift(1) < dataframe["low"].shift(2)
 
         dataframe["event_proxy_long"] = (
             dataframe["volatility_burst"] & dataframe["volume_spike"] & dataframe["range_expansion"] & dataframe["bull_follow_through"]

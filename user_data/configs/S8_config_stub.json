@@ -1,0 +1,27 @@
+{
+  "strategy": "S8_HFT_Progressive_Orderflow_Impulse",
+  "trading_mode": "futures",
+  "margin_mode": "isolated",
+  "stake_currency": "USDT",
+  "timeframe": "1m",
+  "dry_run": true,
+  "exchange": {
+    "name": "binance",
+    "pair_whitelist": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT",
+      "SOL/USDT:USDT",
+      "BNB/USDT:USDT"
+    ],
+    "pair_blacklist": []
+  },
+  "max_open_trades": 4,
+  "order_types": {
+    "entry": "market",
+    "exit": "market",
+    "stoploss": "market"
+  },
+  "leverage": {
+    "default_leverage": 2.5
+  }
+}
