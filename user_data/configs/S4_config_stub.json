@@ -1,0 +1,26 @@
+{
+  "strategy": "S4_MFT_Progressive_BreakoutRetest",
+  "trading_mode": "futures",
+  "margin_mode": "isolated",
+  "stake_currency": "USDT",
+  "timeframe": "15m",
+  "dry_run": true,
+  "exchange": {
+    "name": "binance",
+    "pair_whitelist": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT",
+      "SOL/USDT:USDT"
+    ],
+    "pair_blacklist": []
+  },
+  "max_open_trades": 3,
+  "order_types": {
+    "entry": "market",
+    "exit": "market",
+    "stoploss": "market"
+  },
+  "leverage": {
+    "default_leverage": 2.5
+  }
+}
