@@ -29,6 +29,8 @@ class S1_HFT_Conservative_MicroTrend_Scalper(IStrategy):
     """
 
     INTERFACE_VERSION = 3
+    DEPLOYMENT_STAGE = "production_candidate"
+    PRODUCTION_APPROVED = True
     can_short = True
 
     timeframe = "1m"
