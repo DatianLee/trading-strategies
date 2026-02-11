@@ -3,7 +3,7 @@
 ## Documentation Navigation
 
 - [English Docs](docs/README.md)
-- [中文文档（docs/zh）](docs/zh/00_总览与快速开始.md)
+- [中文文档（docs/zh）](docs/zh/English_Documents_CN_Index.md)
 
 ## Quick start
 

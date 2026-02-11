@@ -1,7 +1,9 @@
 # Docs Home
 
+[中文版本 / Chinese Version](./zh/English_Documents_CN_Index.md)
+
 - [English Docs](./final_production_candidate_package.md)
-- [中文文档（docs/zh）](./zh/00_总览与快速开始.md)
+- [中文文档（docs/zh）](./zh/English_Documents_CN_Index.md)
 
 ## English documents
 

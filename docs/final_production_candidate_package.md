@@ -1,5 +1,7 @@
 # Final Production Candidate Package (10 Freqtrade Futures Strategies)
 
+[中文版本 / Chinese Version](./zh/Final_Production_Candidate_Package_CN.md)
+
 ## A) Complete repository tree
 
 ```text

@@ -1,5 +1,7 @@
 # Validation Playbook for S5/S6/S7 Futures Strategies
 
+[中文版本 / Chinese Version](./zh/S5_S7_Validation_Playbook_CN.md)
+
 ## 1) Walk-forward template (multi-window)
 
 Use identical exchange, pairs, and fee assumptions for all windows.
