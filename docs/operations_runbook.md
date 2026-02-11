@@ -1,5 +1,7 @@
 # Operations Runbook: S1-S7 Portfolio Orchestration
 
+[中文版本 / Chinese Version](./zh/Operations_Runbook_CN.md)
+
 ## Scope
 This runbook covers startup, live monitoring, incident response, and rollback for the portfolio orchestration layer coordinating S1-S7.
 

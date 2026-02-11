@@ -1,5 +1,7 @@
 # Research Contract v1.0 — Freqtrade Futures Blueprint (BTC/ETH/SOL, Binance-first + Hyperliquid Notes)
 
+[中文版本 / Chinese Version](./zh/Research_Contract_v1_CN.md)
+
 ## 0) Scope and Non-Negotiables
 
 **Mission scope**

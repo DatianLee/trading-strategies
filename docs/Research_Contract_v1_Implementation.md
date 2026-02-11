@@ -1,5 +1,7 @@
 # Research Contract v1.0 - Freqtrade Futures Strategy Pack
 
+[中文版本 / Chinese Version](./zh/Research_Contract_Implementation_CN.md)
+
 ## Folder Tree
 
 ```text

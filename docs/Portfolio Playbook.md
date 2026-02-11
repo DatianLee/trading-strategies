@@ -1,5 +1,7 @@
 # Portfolio Playbook: S1-S7 Coordinated Orchestration for Freqtrade
 
+[中文版本 / Chinese Version](./zh/Portfolio_Playbook_CN.md)
+
 ## Objective
 Design a **robustness-first** portfolio layer for S1-S7 where capital is dynamically allocated across uncorrelated strategy buckets, and risk is managed globally at the portfolio level.
 
